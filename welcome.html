@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#0d1117" />
+  <title>PopDog.click - POPDOG</title>
+
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="PopDog.click" />
+  <meta name="description" content="PopDog.click is a fun clicking game for competitive people." />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://popdog.click/" />
+  <meta property="og:title" content="PopDog.click" />
+  <meta property="og:description" content="PopDog.click is a fun clicking game for competitive people." />
+  <meta property="og:image" content="https://popdog.click/images/metadata_image.png" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://popdog.click/" />
+  <meta property="twitter:title" content="PopDog.click" />
+  <meta property="twitter:description" content="PopDog.click is a fun clicking game for competitive people." />
+  <meta property="twitter:image" content="https://popdog.click/images/metadata_image.png" />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68BH9RHXPS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-68BH9RHXPS');
+  </script>
+
+  <!-- AdSense Auto ads: loaded only on this welcome screen, never on the
+       game page, so no ad requests happen while someone is actively
+       playing. Google places ads automatically per the Auto ads settings
+       configured for this site in the AdSense dashboard. -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9661908994140710" crossorigin="anonymous"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&family=DM+Sans:ital,opsz,wght@0,9..40,400..900;1,9..40,700&display=swap" rel="stylesheet" />
+
+  <style>
+    * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0d1117;
+      color: #fff;
+    }
+
+    .welcome {
+      position: relative;
+      width: 100%;
+      height: 100dvh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.25rem;
+      padding: 1.5rem;
+      background: radial-gradient(120% 80% at 50% 8%, oklch(0.36 0.09 195) 0%, oklch(0.22 0.05 250) 45%, oklch(0.15 0.03 265) 100%);
+      text-align: center;
+    }
+
+    .brand {
+      font-family: 'Passion One', sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.6rem, 6vw, 2.6rem);
+      letter-spacing: 0.04em;
+      color: rgba(255, 255, 255, 0.9);
+      text-transform: uppercase;
+    }
+
+    .play-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: clamp(180px, 40vw, 260px);
+      height: clamp(180px, 40vw, 260px);
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, oklch(0.78 0.19 150), oklch(0.55 0.16 150));
+      color: #06210f;
+      font-family: 'Passion One', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.4rem, 8vw, 3.4rem);
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.08), 0 18px 40px rgba(0, 0, 0, 0.45);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .play-btn:hover,
+    .play-btn:focus-visible {
+      transform: scale(1.05);
+      box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.14), 0 20px 46px rgba(0, 0, 0, 0.5);
+    }
+
+    .play-btn:active {
+      transform: scale(0.97);
+    }
+
+    .tagline {
+      max-width: 32ch;
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="welcome">
+    <div class="brand">PopDog</div>
+
+    <a href="index.html" class="play-btn" id="play-btn">PLAY</a>
+
+    <p class="tagline">Click the dog. Climb the leaderboard. Battle other countries.</p>
+  </div>
+
+  <script>
+    document.getElementById('play-btn').addEventListener('click', function () {
+      if (typeof gtag === 'function') gtag('event', 'click_play');
+      // Lets index.html know this tab arrived via PLAY, not a bookmark —
+      // see the redirect guard at the top of index.html.
+      sessionStorage.setItem('popdog_via_welcome', '1');
+    });
+  </script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"004de040a85e4fe28e4f21c2bb2f13f2","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
