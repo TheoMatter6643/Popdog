@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script>
+    // Bounce straight back to the welcome/ads screen if this tab didn't
+    // arrive here via its PLAY button (e.g. a bookmarked/shared link to
+    // this page directly) — keeps ads confined to first arrival instead of
+    // letting a bookmark skip them. Runs before anything else loads so a
+    // bounced visitor never sees a flash of the game.
+    if (!sessionStorage.getItem("popdog_via_welcome")) {
+      location.replace("welcome.html");
+    }
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#0d1117" />
+  <title>POPDOG</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68BH9RHXPS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-68BH9RHXPS');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&family=DM+Sans:ital,opsz,wght@0,9..40,400..900;1,9..40,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.2104f0f886.css" />
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+<body>
+  <div class="app">
+    <div class="scanlines" aria-hidden="true"></div>
+    <div class="frenzy-veil" id="frenzy-veil" aria-hidden="true"></div>
+
+    <!--
+      Invisible Turnstile widget: gates click submission (see handleVerify
+      in backend/main.go) on passing Cloudflare's bot check, without ever
+      showing UI to a legitimate visitor. data-sitekey here is Cloudflare's
+      published "always passes, invisible" test key — swap for the real
+      site key before going live with a real TURNSTILE_SECRET_KEY.
+    -->
+    <div
+      id="turnstile-widget"
+      class="cf-turnstile"
+      data-sitekey="1x00000000000000000000BB"
+      data-size="invisible"
+      data-callback="onTurnstileSuccess"
+      data-error-callback="onTurnstileError"
+    ></div>
+
+    <button class="mute-btn" id="mute-btn" aria-label="Toggle sound" title="Toggle sound">🔊</button>
+
+    <header class="app-header">
+      <div class="you-block">
+        <div class="country-pill">
+          <span class="flag" id="you-flag">🌐</span>
+          <span class="country-name" id="you-name">Somewhere</span>
+        </div>
+        <div class="rank-label" id="you-rank"></div>
+        <div class="online-pill" id="online-pill" title="players online now">
+          <span class="online-dot"></span>
+          <span class="online-value" id="online-value">0</span>
+          <span class="online-label">online</span>
+        </div>
+      </div>
+
+      <div class="count-block">
+        <div class="count" id="user-score">0</div>
+        <div class="count-label">Pops</div>
+      </div>
+
+      <div class="cps-block">
+        <div class="cps-pill">
+          <span class="cps-value" id="cps-value">0</span>
+          <span class="cps-unit">CPS</span>
+        </div>
+        <div class="cps-status" id="cps-status"></div>
+      </div>
+    </header>
+
+    <main class="stage-wrap">
+      <div class="stage" id="stage">
+        <img
+          id="dog"
+          class="dog"
+          src="assets/dog_closed.png"
+          srcset="assets/dog_closed-480w.png 480w, assets/dog_closed-960w.png 960w, assets/dog_closed.png 1400w"
+          sizes="(max-width: 644px) 116vw, 719px"
+          alt="Popdog"
+          draggable="false"
+          loading="eager"
+        />
+      </div>
+    </main>
+
+    <div class="fx-layer" id="fx-layer" aria-hidden="true"></div>
+
+    <div class="panels">
+      <div class="battle-card">
+        <div class="battle-row">
+          <span class="battle-side">
+            <span class="flag" id="battle-you-flag">🌐</span>
+            <span class="battle-name" id="battle-you-name">You</span>
+            <span class="battle-cps" id="battle-you-cps">0 CPS</span>
+          </span>
+          <span class="battle-mid">
+            <span class="gap-label" id="gap-label">—</span>
+            <span class="trend-label" id="trend-label"></span>
+          </span>
+          <span class="battle-side">
+            <span class="battle-cps" id="battle-cps">0 CPS</span>
+            <button class="battle-picker-btn" id="battle-picker-btn">
+              <span class="battle-name" id="battle-name">—</span>
+              <span class="chev">▼</span>
+            </button>
+            <span class="flag" id="battle-flag">🌐</span>
+          </span>
+        </div>
+        <div class="tug-bar"><div class="tug-fill" id="tug-fill"></div></div>
+        <ul class="battle-dropdown" id="battle-dropdown" hidden></ul>
+      </div>
+
+      <div class="board-card">
+        <button class="board-toggle" id="board-toggle">
+          <span>Country leaderboard</span>
+          <span id="board-toggle-label">Show</span>
+        </button>
+        <div class="board-dropdown" id="board-dropdown" hidden>
+          <div class="board-tabs">
+            <button class="tab active" data-tab="alltime">All-Time</button>
+            <button class="tab" data-tab="today">Today</button>
+          </div>
+          <ul class="board-list" id="board-list"></ul>
+          <div class="board-status" id="board-status"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="build-tag" id="build-tag">build 2026-08-20 20:05 UTC</div>
+
+  <script src="app.39861b38a5.js"></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"004de040a85e4fe28e4f21c2bb2f13f2","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
