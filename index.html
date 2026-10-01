@@ -2,16 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <script>
-    // Bounce straight back to the welcome/ads screen if this tab didn't
-    // arrive here via its PLAY button (e.g. a bookmarked/shared link to
-    // this page directly) — keeps ads confined to first arrival instead of
-    // letting a bookmark skip them. Runs before anything else loads so a
-    // bounced visitor never sees a flash of the game.
-    if (!sessionStorage.getItem("popdog_via_welcome")) {
-      location.replace("welcome.html");
-    }
-  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="theme-color" content="#0d1117" />
   <title>POPDOG</title>
