@@ -17,10 +17,10 @@ const e=a0_0x40fe12(0x183),t=a0_0x40fe12(0xdd),n=a0_0x40fe12(0x134),a=a0_0x40fe1
     'src':'Screenshot 2026-10-01 11.13.34.png','srcset':a0_0x40fe12(0xda)
   }
   ,'open': {
-    'src':a0_0x40fe12(0xbf),'srcset':a0_0x40fe12(0x11a)
+    'src':'Screenshot 2026-10-01 09.01.39.png','srcset':a0_0x40fe12(0x11a)
   }
   ,'angry': {
-    'src':a0_0x40fe12(0x190),'srcset':a0_0x40fe12(0x1ba)
+    'src':'Screenshot 2026-10-01 09.01.39.png','srcset':a0_0x40fe12(0x1ba)
   }
 }
 ;
